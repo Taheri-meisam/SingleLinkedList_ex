@@ -22,11 +22,14 @@ public:
 template <class T>
 class SingleLinkedList : public Node<T>{
 
+private:
+    bool firstTimeFlag;
 public:
     Node<T>* head; // head is the begining of the LinkedList 
     Node<T>* tail; // tail is the end 
 
     SingleLinkedList<T>() {
+        firstTimeFlag = false;
         head = new Node<T>();
         tail = new Node<T>();
         head = tail;  // at start of the link list head and tail pointing to each other or to Null 
@@ -37,8 +40,10 @@ public:
         newNode->next = NULL;  // last node always point to NULL 
         tail->next = newNode;  // last pointer now points to the new node 
         tail = newNode; // tail is now the new node 
-         if(head==tail){
-          head->next = tail;
+        if (firstTime == false) {
+            head = newNode;
+            tail = newNode;     
+            firstTimeFlag = true;     
         }
     }
 
