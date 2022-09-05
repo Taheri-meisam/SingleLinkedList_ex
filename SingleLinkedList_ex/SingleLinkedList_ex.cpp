@@ -77,7 +77,6 @@ public:
 
 int main()
 {  
-    std::cout << "Hello World!\n";
     SingleLinkedList<std::string>* Slink = new SingleLinkedList<std::string>();
     Slink->add("Rose");
     Slink->add("Jack");
