@@ -40,7 +40,7 @@ public:
         newNode->next = NULL;  // last node always point to NULL 
         tail->next = newNode;  // last pointer now points to the new node 
         tail = newNode; // tail is now the new node 
-        if (firstTime == false) {
+        if (firstTimeFlag == false) {
             head = newNode;
             tail = newNode;     
             firstTimeFlag = true;     
