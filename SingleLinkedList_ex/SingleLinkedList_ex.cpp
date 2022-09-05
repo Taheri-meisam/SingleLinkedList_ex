@@ -11,43 +11,47 @@
 template <class T>
 class Node {
 public:
-    T data;
-    Node* next;
+    T data;        // data to save, can be any data type
+    Node* next;  // pointer to the next node 
     Node<T>() {
         next = NULL;
     };
 };
+
+//public class inherits from Node 
 template <class T>
 class SingleLinkedList : public Node<T>{
 
 public:
-    Node<T>* head;
-    Node<T>* tail;
+    Node<T>* head; // head is the begining of the LinkedList 
+    Node<T>* tail; // tail is the end 
 
     SingleLinkedList<T>() {
         head = new Node<T>();
         tail = new Node<T>();
-        head = tail;
+        head = tail;  // at start of the link list head and tail pointing to each other or to Null 
     }
     void add(T data) {
-        Node<T>* newNode = new Node<T>;
-        newNode->data = data;
-        newNode->next = NULL;
-        tail->next = newNode;
-        tail = newNode;
+        Node<T>* newNode = new Node<T>;  // create a node in heap 
+        newNode->data = data;  
+        newNode->next = NULL;  // last node always point to NULL 
+        tail->next = newNode;  // last pointer now points to the new node 
+        tail = newNode; // tail is not the new node 
     }
 
     void printData() {
-        Node<T>* p = head;
+        Node<T>* p = head;   // create pointer that points to head 
+        // loop through until it gets to NULL
         while (p != NULL) {
             std::cout << p->data << " " << std::endl;
-            p = p->next;
+            p = p->next; //p keep going forward to the next node 
         }
     }
 
     void  insertAt(int index, T data) {
         Node<T>* p = head;
         int i = 0;
+        // if we dont reach end and until the we rich the point keep going forward 
         while (p->next != NULL && i < index - 1) {
             p = p->next;
             i++;
@@ -55,8 +59,8 @@ public:
 
         Node<T>* ANewNode = new Node<T>();
         ANewNode->data = data;
-        ANewNode->next = p->next;
-        p->next = ANewNode;
+        ANewNode->next = p->next;  // new node next pointer is pointing where the P was pointing 
+        p->next = ANewNode;   // now P pointer points to new node 
     }
 
     void  RemoveAt(int index) {
@@ -68,7 +72,7 @@ public:
         }
 
         Node<T>* tempNode = p->next;
-        p->next = p->next->next;
+        p->next = p->next->next;   // because we deleted a node , we have to go two pointers forward. 
         tempNode->next = NULL;
         delete tempNode;
     }
